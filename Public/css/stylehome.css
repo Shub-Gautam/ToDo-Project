@@ -1,0 +1,7 @@
+.main-card {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: fit-content;
+  border: 1px solid black;
+}
