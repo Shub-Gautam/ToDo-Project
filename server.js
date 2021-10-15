@@ -14,7 +14,7 @@ app.set("views", path.join(__dirname, "/Views"));
 app.set("view engine", "ejs");
 
 app.use("/upload", require("./Routes/Uploadtasks"));
-app.use("/task", require("./Routes/Gettasks"));
+app.use("/", require("./Routes/Gettasks"));
 app.use("/delete", require("./Routes/Deletetask"));
 
 app.listen(PORT, () => {
