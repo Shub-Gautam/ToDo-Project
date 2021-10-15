@@ -10,7 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("Public"));
 app.use(express.json());
 
+app.set("views", path.join(__dirname, "/Views"));
 app.set("view engine", "ejs");
+
 app.use("/upload", require("./Routes/Uploadtasks"));
 app.use("/task", require("./Routes/Gettasks"));
 app.use("/delete", require("./Routes/Deletetask"));
