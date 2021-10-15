@@ -8,10 +8,6 @@ const taskschema = new Schema(
       type: String,
       required: true,
     },
-    userid: {
-      type: String,
-      required: false,
-    },
   },
   { timestamps: true }
 );

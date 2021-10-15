@@ -1,20 +1,33 @@
 const router = require("express").Router();
-const connectDB = require("./Services/MDBConnector");
+const connectDB = require("../Services/MDBConnector");
 const task = require("../Services/DataSchema");
 
 router.post("/", (req, res) => {
   connectDB();
 
-  var taskid = req.body.checkbox;
+  const checkedItemId = req.body.checkbox;
+  const listName = req.body.listName;
 
-  task.findOneAndRemove(taskid, (err) => {
-    if (err) {
-      console.error("error while removing task" + err);
-    } else {
-      console.log("Successfully removed 1 item");
-      return res.status(200).send({ success: true });
-    }
-  });
+  if (listName === "Today") {
+    task.findByIdAndRemove(checkedItemId, function (err) {
+      if (!err) {
+        console.log("Successfully deleted checked item.");
+        res.redirect("/task");
+      } else {
+        console.error("error while removing task" + err);
+      }
+    });
+  } else {
+    List.findOneAndUpdate(
+      { name: listName },
+      { $pull: { items: { _id: checkedItemId } } },
+      function (err, foundList) {
+        if (!err) {
+          res.redirect("/task" + listName);
+        }
+      }
+    );
+  }
 });
 
 module.exports = router;
