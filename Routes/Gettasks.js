@@ -32,7 +32,7 @@ router.get("/", (req, res) => {
           console.log("Successfully savevd default items to DB.");
         }
       });
-      res.redirect("/task");
+      res.redirect("/");
     } else {
       console.log("successfully fetched tasks");
       //   Display items using ejs

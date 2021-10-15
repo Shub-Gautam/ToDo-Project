@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     task.findByIdAndRemove(checkedItemId, function (err) {
       if (!err) {
         console.log("Successfully deleted checked item.");
-        res.redirect("/task");
+        res.redirect("/");
       } else {
         console.error("error while removing task" + err);
       }
@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
       { $pull: { items: { _id: checkedItemId } } },
       function (err, foundList) {
         if (!err) {
-          res.redirect("/task" + listName);
+          res.redirect("/" + listName);
         }
       }
     );

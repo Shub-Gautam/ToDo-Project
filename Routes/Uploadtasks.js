@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
   if (listName === "Today") {
     taskblock.save();
     console.log("Saved Successfully");
-    res.redirect("/task");
+    res.redirect("/");
   }
 });
 
