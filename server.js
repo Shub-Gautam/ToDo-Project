@@ -11,9 +11,6 @@ app.use(express.static("Public"));
 app.use(express.json());
 
 app.set("view engine", "ejs");
-app.use("/", (req, res) => {
-  res.redirect("/task");
-});
 app.use("/upload", require("./Routes/Uploadtasks"));
 app.use("/task", require("./Routes/Gettasks"));
 app.use("/delete", require("./Routes/Deletetask"));
